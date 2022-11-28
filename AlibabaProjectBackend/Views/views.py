@@ -1,10 +1,17 @@
-#import requests 
-#import json
-#import pandas as pd
-from django.views import View
-from django.http.response import HttpResponse
-from django.shortcuts import render
-
-def backend(request):
-    list_of_backend=[{'name':'Alibaba','num':'1'},{'name':'No Alibaba','num':'2'}]
-    return HttpResponse(list_of_backend)  
+"""views of Backend"""
+import requests
+from django.http.response import JsonResponse
+#from django.shortcuts import render
+from .views_function import *
+from Applications.DBgestor.views import save_search
+def backend(request,product):
+    """this function is the orchestrator"""
+    url=assemble_url(product)
+    save_search(product)
+    data_from_url=web_scraper(url)
+    search_results=parcer(data_from_url)
+    ordered_products=sorf_list(search_results)
+    #print (request.method)
+    #print (product)
+    #print (type(ordered_products))
+    return JsonResponse(ordered_products,safe=False)

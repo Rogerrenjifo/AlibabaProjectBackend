@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .Views.views import backend
-
+from Applications.DBgestor.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('backend',backend)
+    path('backend/<str:product>',backend),
+    path('backend',tracker_status),
 ]
