@@ -1,0 +1,15 @@
+name: pipeline1
+on: workflow_dispatch
+
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    stepts: 
+    - name: namestep1
+      runs: echo "hola roger"
+
+  secondjob:
+    runs-on: ubuntu-latest
+    stepts: 
+    - name: namestep1_job2
+      runs: echo "chau roger"
