@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - name: namestep1
-      runs: echo "hola roger"
+      run: echo "hola roger"
 
   secondjob:
     runs-on: ubuntu-latest
